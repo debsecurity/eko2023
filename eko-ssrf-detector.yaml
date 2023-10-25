@@ -1,0 +1,38 @@
+id: aws-metadata-endpoint-check
+
+info:
+  name: AWS Metadata Endpoint Exposure
+  author: debsec
+  severity: high
+  description: Checks for the exposure of the AWS metadata endpoint.
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}///aws.deb-security.cl/latest"
+
+    matchers:
+      - type: word
+        words:
+          - "meta-data"
+        part: body
+
+  - method: POST
+    path:
+      - "{{BaseURL}}///aws.deb-security.cl/latest"
+
+    matchers:
+      - type: word
+        words:
+          - "meta-data"
+        part: body
+
+  - method: PUT
+    path:
+      - "{{BaseURL}}///aws.deb-security.cl/latest"
+
+    matchers:
+      - type: word
+        words:
+          - "meta-data"
+        part: body
